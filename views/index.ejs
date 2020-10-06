@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>RC Embeddable Demo</title>
+    <script src="js/main.js" type="text/javascript"></script>
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+  <script>
+  (function() {
+    var rcs = document.createElement("script");
+    //rcs.src = "https://ringcentral.github.io/ringcentral-embeddable/adapter.js?appServer=https://platform.devtest.ringcentral.com";
+    rcs.src = "https://ringcentral.github.io/ringcentral-embeddable/adapter.js?clientId=1E3rPbdVTf-9E20azmVwpg";
+    var rcs0 = document.getElementsByTagName("script")[0];
+    rcs0.parentNode.insertBefore(rcs, rcs0);
+  })();
+</script>
+  <!--iframe width="300" height="500" allow="microphone" src="https://apps.ringcentral.com/integration/ringcentral-embeddable/1.0.3/app.html"-->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="/" class="navbar-brand"><b>Embeddable</b> Demo</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="https://www.ringcentral.com" target="_blank">Powered by&nbsp;<img alt="Brand" src="img/ringcentral.png" height="20"></a></li>
+      </ul>
+    </div>
+  </nav>
+  <section id='content'>
+    <div>
+        <h2>Universal Links</h2>
+        <a target="_blank" href="https://app.glip.com/r/call?number=+12092484775">Call +12092484775</a></br>
+        <a target="_blank" href="https://app.glip.com/r/glip?type=all">ALL</a></br>
+        <a target="_blank" href="https://app.glip.com/r/glip?type=direct">Direct</a></br>
+        <a target="_blank" href="https://app.glip.com/r/glip?type=teams&team=Platform%20PM">TEAMS</a></br>
+        <a target="_blank" href="https://app.glip.com/r/glip?type=text">TEXT</a></br>
+        <a target="_blank" href="https://app.glip.com/r/glip?type=favorites">FAVORITES</a></br>
+
+        <h2>URL Schemes RC Phone app (Mobile & Softphone)</h2>
+        <a target="_blank" href="rcmobile://call?number=+16505130930">Call +16505130930</a></br>
+        <a target="_blank" href="rcmobile://sms?number=+16505130930">Text +16505130930</a></br>
+
+        <h2>URL Schemes Classic RC App</h2>
+        <ul>
+          <li>
+            <div>Voice</div>
+            <a target="_blank" href="glip://r/dialer?number=+12092484775">Dial +12092484775</a></br>
+            <a target="_blank" href="glip://r/call?number=+12092484775">Call +12092484775</a></br>
+          </li>
+          <li>
+            <div>SMS Messaging</div>
+            <a target="_blank" href="glip://r/sms?type=new">SMS</a></br>
+            <a target="_blank" href="glip://r/sms?type=new&number=+12092484775">SMS NUMBER</a></br>
+            <a target="_blank" href="glip://r/sms?type=new&number=+12092484775&content=Hello from Web page">SMS NUMBER & TEXT</a></br>
+          </li>
+          <li>
+            <div>Team Messaging</div>
+            <a target="_blank" href="glip://r/glip?type=all">ALL</a></br>
+            <a target="_blank" href="glip://r/glip?type=direct">Direct</a></br>
+            <a target="_blank" href="glip://r/glip?type=teams">TEAMS</a></br>
+            <a target="_blank" href="glip://r/glip?type=text">TEXT</a></br>
+            <a target="_blank" href="glip://r/glip?type=favorites">FAVORITES</a></br>
+          </li>
+        </ul>
+        <h2>URL Schemes Jupiter App</h2>
+        <ul>
+          <li>
+            <div>Voice</div>
+            <a target="_blank" href="rcapp://r/dialer?number=+12092484775">Dial +12092484775</a></br>
+            <a target="_blank" href="rcapp://r/call?number=+12092484775">Call +12092484775</a></br>
+          </li>
+          <li>
+            <div>SMS Messaging</div>
+            <a target="_blank" href="rcapp://r/sms?type=new">SMS</a></br>
+            <a target="_blank" href="rcapp://r/sms?number=+12092484775">SMS NUMBER</a></br>
+            <a target="_blank" href="rcapp://r/sms?type=new&number=+12092484775&content=Hello from Web page">SMS NUMBER & TEXT</a></br>
+          </li>
+          <li>
+            <div>Team Messaging</div>
+            <a target="_blank" href="rcapp://">ALL</a></br>
+            <a target="_blank" href="rcapp://">Direct</a></br>
+            <a target="_blank" href="rcapp://r/glip?type=teams">TEAMS</a></br>
+            <a target="_blank" href="rcapp://r/glip?type=text">TEXT</a></br>
+            <a target="_blank" href="rcapp://r/glip?type=favorites">FAVORITES</a></br>
+          </li>
+        </ul>
+      </div>
+  </section>
+</body>
+</html>
