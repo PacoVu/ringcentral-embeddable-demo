@@ -13,14 +13,15 @@
 </head>
 <body>
   <script>
-  (function() {
-    var rcs = document.createElement("script");
-    //rcs.src = "https://ringcentral.github.io/ringcentral-embeddable/adapter.js?appServer=https://platform.devtest.ringcentral.com";
-    rcs.src = "https://ringcentral.github.io/ringcentral-embeddable/adapter.js?clientId=1E3rPbdVTf-9E20azmVwpg";
-    var rcs0 = document.getElementsByTagName("script")[0];
-    rcs0.parentNode.insertBefore(rcs, rcs0);
-  })();
-</script>
+    (function() {
+      var rcs = document.createElement("script");
+      //rcs.src = "https://ringcentral.github.io/ringcentral-embeddable/adapter.js?appServer=https://platform.devtest.ringcentral.com";
+      //rcs.src = "https://ringcentral.github.io/ringcentral-embeddable/adapter.js?clientId=1E3rPbdVTf-9E20azmVwpg";
+      rcs.src = "https://ringcentral.github.io/ringcentral-embeddable/adapter.js";
+      var rcs0 = document.getElementsByTagName("script")[0];
+      rcs0.parentNode.insertBefore(rcs, rcs0);
+    })();
+  </script>
   <!--iframe width="300" height="500" allow="microphone" src="https://apps.ringcentral.com/integration/ringcentral-embeddable/1.0.3/app.html"-->
   <nav class="navbar navbar-default">
     <div class="container-fluid">
