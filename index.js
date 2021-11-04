@@ -1,4 +1,5 @@
 var path = require('path')
+var TeleSignSDK = require('telesignsdk');
 
 if('production' !== process.env.LOCAL_ENV )
   require('dotenv').load();
