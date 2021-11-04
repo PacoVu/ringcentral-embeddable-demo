@@ -35,6 +35,7 @@ app.get('/inbound-popup', function (req, res) {
 
 function spamNumberDetectionRemote(phoneNumber, callback){
       console.log("spamNumberDetectionRemote (Telesign): " + phoneNumber)
+      phoneNumber = phoneNumber.replace(/[\+()-\s]/g, '')
       const client = new TeleSignSDK(
           process.env.TELESIGN_CUSTOMER_ID,
           process.env.TELESIGN_API_KEY,
