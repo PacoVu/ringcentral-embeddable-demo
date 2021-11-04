@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Call Logs Visualization Demo</title>
+    <title>Inbound Popup Demo</title>
     <script src="js/main.js" type="text/javascript"></script>
     <script src="js/jquery-3.1.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -23,14 +23,12 @@
       <div class="navbar-header">
         <a href="/" class="navbar-brand"><b>Inbound</b> POPUP</a>
       </div>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="https://www.ringcentral.com" target="_blank">Powered by&nbsp;<img alt="Brand" src="img/ringcentral.png" height="20"></a></li>
-      </ul>
     </div>
   </nav>
   <section id='content'>
     <div id='phone-number-info'>
       <div>Caller phone number info</div>
+      <div>Caller number: <%- phoneNumberInfo.number %></div>
       <div>Level: <%- phoneNumberInfo.level %></div>
       <div>Score: <%- phoneNumberInfo.score %></div>
       <div>Recommendation: <%- phoneNumberInfo.recommendation %></div>

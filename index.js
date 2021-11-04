@@ -27,7 +27,7 @@ app.get('/', function (req, res) {
 app.get('/testpopup', function (req, res) {
   console.log(req.query)
   spamNumberDetectionRemote(req.query.phoneNumber, (err, result) => {
-      res.render('test-popup', {
+      res.render('inbound-popup', {
         phoneNumberInfo: result
       })
   })
@@ -46,6 +46,7 @@ function spamNumberDetectionRemote(phoneNumber, callback){
         }else{
           console.log(JSON.stringify(response))
           var phoneNumberInfo = {
+            number: phoneNumber,
             level: "N/A",
             score: 500,
             recommendation: "N/A"
