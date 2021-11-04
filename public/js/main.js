@@ -1,6 +1,13 @@
 var timer = null
 var pEngine = null
 
+function init(){
+  const urlParams = new URLSearchParams(window.location.search);
+  const phoneNumber = urlParams.get('phoneNumber');
+  alert(phoneNumber)
+  //detectSpamnumber(phoneNumber)
+}
+  
 window.addEventListener('message', (e) => {
   const data = e.data;
   if (data) {

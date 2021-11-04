@@ -10,6 +10,16 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script>
+      function makeCall(number) {
+        alert("call")
+          document.querySelector("#rc-widget").contentWindow.postMessage({
+                  type: 'rc-adapter-new-call',
+                  phoneNumber: number,
+                  toCall: true,
+                  }, '*');
+      }
+    </script>
 </head>
 <body>
   <script>
@@ -17,12 +27,13 @@
       var rcs = document.createElement("script");
       //rcs.src = "https://ringcentral.github.io/ringcentral-embeddable/adapter.js?appServer=https://platform.devtest.ringcentral.com";
       //rcs.src = "https://ringcentral.github.io/ringcentral-embeddable/adapter.js?clientId=1E3rPbdVTf-9E20azmVwpg";
-      rcs.src = "https://ringcentral.github.io/ringcentral-embeddable/adapter.js";
+      rcs.src = "https://ringcentral.github.io/ringcentral-embeddable/adapter.js?defaultCallWith=browser";
       var rcs0 = document.getElementsByTagName("script")[0];
       rcs0.parentNode.insertBefore(rcs, rcs0);
     })();
   </script>
-  <!--iframe width="300" height="500" allow="microphone" src="https://apps.ringcentral.com/integration/ringcentral-embeddable/1.0.3/app.html"-->
+  <!--iframe width="300" height="500" id="rc-widget" allow="microphone" src="https://ringcentral.github.io/ringcentral-embeddable/app.html"></iframe -->
+  <!--iframe width="300" height="500" allow="microphone" src="https://apps.ringcentral.com/integration/ringcentral-embeddable/1.0.3/app.html"></iframe -->
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -33,6 +44,7 @@
       </ul>
     </div>
   </nav>
+
   <section id='content'>
     <div class='col-xs-12'>
       <div class='col-sm-2'>
@@ -154,9 +166,11 @@
           </li>
           <li>
             <div>SMS Messaging</div>
-            <a target="_blank" title="https://app.ringcentral.com/r/sms?type=new" href="https://app.ringcentral.com/r/sms?type=new">Open SMS view</a></br>
-            <a target="_blank" title="https://app.ringcentral.com/r/sms?type=new&number=+12092484775" href="https://app.ringcentral.com/r/sms?type=new&number=+12092484775">Send SMS to number</a></br>
-            <a target="_blank" title="https://app.ringcentral.com/r/sms?type=new&number=+12092484775&content=Hello%20world" href="https://app.ringcentral.com/r/sms?type=new&number=+12092484775&content=Hello%20world">Send Hello world</a></br>
+            <a target="_blank" title="https://app.ringcentral.com/r/sms?type=new" href="https://app.ringcentral.com/r/sms">Open SMS view</a></br>
+            <a target="_blank" title="https://app.ringcentral.com/r/sms?type=new" href="https://app.ringcentral.com/l/phone/sms">Open SMS view</a></br>
+            <a target="_blank" title="https://app.ringcentral.com/r/sms?type=new&number=+12092484775" href="https://app.ringcentral.com/l/phone/sms?action=history">SMS History</a></br>
+            <a target="_blank" title="https://app.ringcentral.com/r/sms?type=new&number=+12092484775" href="https://app.ringcentral.com/l/phone/sms?action=create&number=12092494775&content=Testing%20SMS">Send SMS to number</a></br>
+            <a target="_blank" title="https://app.ringcentral.com/r/sms?type=new&number=+12092484775&content=Hello%20world" href="https://app.ringcentral.com/l/phone/sms?type=new&number=+12092484775&content=Hello%20world">Send Hello world</a></br>
           </li>
           <li>
             <div>Fax</div>
@@ -170,6 +184,13 @@
         <ul>
           <li><a target="_blank" href="rcmobile://call?number=+12092484775">Call this number</a></li>
           <li><a target="_blank" href="rcmobile://sms?number=+12092484775">Text this number</a></li>
+          <li><a target="_blank" href="rcmobile://sms?number=+12092484775&body=Hello world">Text this number</a></li>
+        </ul>
+      </div>
+      <div class='col-sm-2'>
+        <div><b>Call from Embeddable</b></div>
+        <ul>
+          <li><a target="_blank" href="javascript:makeCall('+12092484775')">Call this number</a></li>
         </ul>
       </div>
     </div>

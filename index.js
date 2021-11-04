@@ -13,7 +13,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.use(urlencoded);
 
-var port = process.env.PORT || 3000
+var port = process.env.PORT || 3002
 
 var server = require('http').createServer(app);
 server.listen(port);
@@ -25,5 +25,44 @@ app.get('/', function (req, res) {
 
 app.get('/testpopup', function (req, res) {
   console.log(req.query)
-  res.send('test-popup')
+  spamNumberDetectionRemote(req.query.phoneNumber, (err, result) => {
+      res.render('test-popup', {
+        phoneNumberInfo: result
+      })
+  })
 })
+
+function spamNumberDetectionRemote(phoneNumber, callback){
+      console.log("spamNumberDetectionRemote (Telesign): " + phoneNumber)
+      const client = new TeleSignSDK(
+          process.env.TELESIGN_CUSTOMER_ID,
+          process.env.TELESIGN_API_KEY,
+          "https://rest-api.telesign.com"
+      );
+      client.score.score((err, response) => {
+        if(err){
+          callback(err, "")
+        }else{
+          console.log(JSON.stringify(response))
+          var phoneNumberInfo = {
+            level: "N/A",
+            score: 500,
+            recommendation: "N/A"
+          }
+          if (response.hasOwnProperty('risk')){
+            phoneNumberInfo.score = response.risk.score
+            phoneNumberInfo.recommendation = response.risk.recommendation
+            if (response.risk.score >= 901){
+                phoneNumberInfo.level = "Risky"
+            }else if (response.risk.score >= 801){ // 601
+                phoneNumberInfo.level = "Highly"
+            }else if (response.risk.score >= 651){ // 401
+                phoneNumberInfo.level = "Likely"
+            }else{
+                phoneNumberInfo.level = "Clean"
+            }
+          }
+          callback(null, phoneNumberInfo)
+        }
+      }, phoneNumber, "sign-in")
+}
