@@ -12,12 +12,6 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body onload="init()">
-  <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const phoneNumber = urlParams.get('phoneNumber');
-    console.log(phoneNumber)
-  </script>
-
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -26,12 +20,12 @@
     </div>
   </nav>
   <section id='content'>
-    <div id='phone-number-info'>
+    <div>
       <div>Caller phone number info</div>
-      <div>Caller number: <%- phoneNumberInfo.number %></div>
-      <div>Level: <%- phoneNumberInfo.level %></div>
-      <div>Score: <%- phoneNumberInfo.score %></div>
-      <div>Recommendation: <%- phoneNumberInfo.recommendation %></div>
+      <div>Caller number: <%- callerInfo.number %></div>
+      <div>Location: <%- callerInfo.location %></div>
+      <div>Carrier: <%- callerInfo.carrier %></div>
+      <div>Risk level: <%- callerInfo.risk %></div>
     </div>
   </section>
 </body>
