@@ -24,7 +24,7 @@ app.get('/', function (req, res) {
   res.render('index')
 })
 
-app.get('/testpopup', function (req, res) {
+app.get('/inbound-popup', function (req, res) {
   console.log(req.query)
   spamNumberDetectionRemote(req.query.phoneNumber, (err, result) => {
       res.render('inbound-popup', {
