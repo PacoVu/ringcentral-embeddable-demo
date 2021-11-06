@@ -9,7 +9,7 @@ function init(){
 
 window.addEventListener('message', (e) => {
   const data = e.data;
-  $("#events").html(data.call)
+  $("#events").html(JSON.stringify(data.call))
   if (data) {
     switch (data.type) {
       case 'rc-call-ring-notify':
