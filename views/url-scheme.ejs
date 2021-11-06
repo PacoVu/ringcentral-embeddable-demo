@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>RC Embeddable Demo</title>
+    <script src="js/main.js" type="text/javascript"></script>
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script>
+      function makeCall(number) {
+        alert("call")
+          document.querySelector("#rc-widget").contentWindow.postMessage({
+                  type: 'rc-adapter-new-call',
+                  phoneNumber: number,
+                  toCall: true,
+                  }, '*');
+      }
+    </script>
+</head>
+<body>
+  <script>
+    (function() {
+      var rcs = document.createElement("script");
+      //rcs.src = "https://ringcentral.github.io/ringcentral-embeddable/adapter.js?appServer=https://platform.devtest.ringcentral.com";
+      //rcs.src = "https://ringcentral.github.io/ringcentral-embeddable/adapter.js?clientId=1E3rPbdVTf-9E20azmVwpg";
+      rcs.src = "https://ringcentral.github.io/ringcentral-embeddable/adapter.js?defaultCallWith=browser";
+      var rcs0 = document.getElementsByTagName("script")[0];
+      rcs0.parentNode.insertBefore(rcs, rcs0);
+    })();
+  </script>
+  <!--iframe width="300" height="500" id="rc-widget" allow="microphone" src="https://ringcentral.github.io/ringcentral-embeddable/app.html"></iframe -->
+  <!--iframe width="300" height="500" allow="microphone" src="https://apps.ringcentral.com/integration/ringcentral-embeddable/1.0.3/app.html"></iframe -->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="/" class="navbar-brand"><b>Embeddable</b> Demo</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/index">embeddable</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id='content'>
+    <div class='col-xs-12'>
+      <div class='col-sm-2'>
+        <div><b>RC App Classic</b></div>
+        <ul>
+          <li>
+            <div>Voice</div>
+            <a target="_blank" href="glip://r/dialer?number=+12092484775">Dial this number</a></br>
+            <a target="_blank" href="glip://r/call?number=+12092484775">Call this number</a></br>
+          </li>
+          <li>
+            <div>SMS Messaging</div>
+            <a target="_blank" href="glip://r/sms?type=new">SMS</a></br>
+            <a target="_blank" href="glip://r/sms?type=new&number=+12092484775">SMS NUMBER</a></br>
+            <a target="_blank" href="glip://r/sms?type=new&number=+12092484775&content=Hello from Web page">SMS NUMBER & TEXT</a></br>
+          </li>
+          <li>
+            <div>Team Messaging</div>
+            <a target="_blank" href="glip://r/glip?type=all">ALL</a></br>
+            <a target="_blank" href="glip://r/glip?type=direct">Direct</a></br>
+            <a target="_blank" href="glip://r/glip?type=teams">TEAMS</a></br>
+            <a target="_blank" href="glip://r/glip?type=text">TEXT</a></br>
+            <a target="_blank" href="glip://r/glip?type=favorites">FAVORITES</a></br>
+
+            <a target="_blank" href="glip://r/invite">Invite</a></br>
+            <a target="_blank" href="glip://r/invite?email=<email>">Invite Email</a></br>
+            <a target="_blank" href="glip://r/invite?type=fromcontact">Invite Contact</a></br>
+            <a target="_blank" href="glip://r/invite?type=vialink">Invite Link</a></br>
+          </li>
+          <li>
+            <div>Meetings: N/A</div>
+          </li>
+          <li>
+            <div>Fax</div>
+            <a target="_blank" href="glip://r/fax?type=all">All</a></br>
+            <a target="_blank" href="glip://r/fax?type=new">New</a></br>
+            <a target="_blank" href="glip://r/fax?type=received">Received</a></br>
+            <a target="_blank" href="glip://r/fax?type=sent">Sent</a></br>
+            <a target="_blank" href="glip://r/fax?type=draft">Draft</a></br>
+            <a target="_blank" href="glip://r/fax?type=failed">Failed</a></br>
+          </li>
+          <li>
+            <div>Call Log</div>
+            <a target="_blank" href="glip://r/calllog?type=all">All</a></br>
+            <a target="_blank" href="glip://r/calllog?type=missedcalls">Missed Calls</a></br>
+            <a target="_blank" href="glip://r/calllog?type=voicemail">Voicemail</a></br>
+          </li>
+          <li>
+            <div>Conference Call</div>
+            <a target="_blank" href="glip://r/rcccall?type=host">Host</a></br>
+            <a target="_blank" href="glip://r/rcccall?type=join&number=+12092484775&accesscode=12345">Join</a></br>
+            <a target="_blank" href="glip://r/calllog?type=voicemail">Voicemail</a></br>
+          </li>
+          <li>
+            <div>Contact List</div>
+            <a target="_blank" href="glip://r/contactlist">All</a></br>
+            <a target="_blank" href="glip://r/contactlist?type=company">Company</a></br>
+            <a target="_blank" href="glip://r/contactlist?type=personal">Personal</a></br>
+            <a target="_blank" href="glip://r/contactlist?type=teams">Teams</a></br>
+            <a target="_blank" href="glip://r/contactlist?type=quickcontacts">Quick Contact</a></br>
+            <a target="_blank" href="glip://r/contactlist?type=addnew">Add New</a></br>
+            <a target="_blank" href="glip://r/contactlist?type=addnew&name=New%20Contact&number=+12345667888">Add New with name & number</a></br>
+          </li>
+        </ul>
+      </div>
+      <div class='col-sm-2'>
+        <div><b>Universal Links Glip</b></div>
+        <a target="_blank" href="https://app.glip.com/r/call?number=+12092484775">Call this number</a></br>
+        <a target="_blank" href="https://app.glip.com/r/glip?type=all">ALL</a></br>
+        <a target="_blank" href="https://app.glip.com/r/glip?type=direct">Direct</a></br>
+        <a target="_blank" href="https://app.glip.com/r/glip?type=teams&team=Platform%20PM">TEAMS</a></br>
+        <a target="_blank" href="https://app.glip.com/r/glip?type=text">TEXT</a></br>
+        <a target="_blank" href="https://app.glip.com/r/glip?type=favorites">FAVORITES</a></br>
+      </div>
+      <div class='col-sm-2'>
+        <div><b>RC App Jupiter</b></div>
+        <ul>
+          <li>
+            <div>Voice</div>
+            <a target="_blank" title="rcapp://r/dialer?number=+12092484775" href="rcapp://r/dialer?number=+12092484775">Dial this number</a></br>
+            <a target="_blank" title="rcapp://r/call?number=+12092484775" href="rcapp://r/call?number=+12092484775">Call this number</a></br>
+          </li>
+          <li>
+            <div>SMS Messaging</div>
+            <a target="_blank" title="rcapp://r/sms?type=new" href="rcapp://r/sms?type=new">SMS</a></br>
+            <a target="_blank" title="rcapp://r/sms?number=+12092484775" href="rcapp://r/sms?number=+12092484775">SMS NUMBER</a></br>
+            <a target="_blank" title="rcapp://r/sms?type=new&number=+12092484775&content=Hello from Web page" href="rcapp://r/sms?type=new&number=+12092484775&content=Hello from Web page">SMS NUMBER & TEXT</a></br>
+          </li>
+          <li>
+            <div>Team Messaging: N/A</div>
+          </li>
+          <li>
+            <div>Meetings: N/A</div>
+          </li>
+          <li>
+            <div>Fax</div>
+            <a target="_blank" title="" href="rcapp://r/fax?type=new">Create new fax</a></br>
+            <a target="_blank" title="" href="rcapp://r/fax?type=new&number=+12092484775">Send fax to</a></br>
+          </li>
+          <li>
+            <div>Call Log: N/A</div>
+          </li>
+          <li>
+            <div>Conference Call: N/A</div>
+          </li>
+          <li>
+            <div>Contact List: N/A</div>
+          </li>
+        </ul>
+      </div>
+      <div class='col-sm-2'>
+        <div><b>Universal Links RingCentral</b></div>
+        <ul>
+          <li>
+            <div>Voice</div>
+            <a target="_blank" title="https://app.ringcentral.com/r/dialer" href="https://app.ringcentral.com/r/dialer">Dial</a></br>
+            <a target="_blank" title="https://app.ringcentral.com/r/dialer?number=+12092484775" href="https://app.ringcentral.com/r/dialer?number=+12092484775">Dial this number</a></br>
+            <a target="_blank" title="https://app.ringcentral.com/r/call?number=+12092484775" href="https://app.ringcentral.com/r/call?number=+12092484775">Call this number</a></br>
+          </li>
+          <li>
+            <div>SMS Messaging</div>
+            <a target="_blank" title="https://app.ringcentral.com/r/sms?type=new" href="https://app.ringcentral.com/r/sms">Open SMS view</a></br>
+            <a target="_blank" title="https://app.ringcentral.com/r/sms?type=new" href="https://app.ringcentral.com/l/phone/sms">Open SMS view</a></br>
+            <a target="_blank" title="https://app.ringcentral.com/r/sms?type=new&number=+12092484775" href="https://app.ringcentral.com/l/phone/sms?action=history">SMS History</a></br>
+            <a target="_blank" title="https://app.ringcentral.com/r/sms?type=new&number=+12092484775" href="https://app.ringcentral.com/l/phone/sms?action=create&number=12092494775&content=Testing%20SMS">Send SMS to number</a></br>
+            <a target="_blank" title="https://app.ringcentral.com/r/sms?type=new&number=+12092484775&content=Hello%20world" href="https://app.ringcentral.com/l/phone/sms?type=new&number=+12092484775&content=Hello%20world">Send Hello world</a></br>
+          </li>
+          <li>
+            <div>Fax</div>
+            <a target="_blank" title="" href="https://app.ringcentral.com/r/fax?type=new">Create new fax</a></br>
+            <a target="_blank" title="" href="https://app.ringcentral.com/r/fax?type=new&number=+12092484775">Send fax to</a></br>
+          </li>
+        </ul>
+      </div>
+      <div class='col-sm-2'>
+        <div><b>RC Phone app (Mobile & Desktop)</b></div>
+        <ul>
+          <li><a target="_blank" href="rcmobile://call?number=+12092484775">Call this number</a></li>
+          <li><a target="_blank" href="rcmobile://sms?number=+12092484775">Text this number</a></li>
+          <li><a target="_blank" href="rcmobile://sms?number=+12092484775&body=Hello world">Text this number</a></li>
+        </ul>
+      </div>
+      <div class='col-sm-2'>
+        <div><b>Call from Embeddable</b></div>
+        <ul>
+          <li><a target="_blank" href="javascript:makeCall('+12092484775')">Call this number</a></li>
+        </ul>
+      </div>
+    </div>
+    <!--
+      <h2>URL Schemes Whatsapp</h2>
+      <ul>
+        <li>
+          <div>Test Whatsapp</div>
+          <a target="_blank" href="whatsapp://send?text=Hello World!">Launch Whatsapp</a></br>
+        </li>
+      </ul>
+    -->
+  </section>
+</body>
+</html>

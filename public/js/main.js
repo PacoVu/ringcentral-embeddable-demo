@@ -9,6 +9,7 @@ function init(){
 
 window.addEventListener('message', (e) => {
   const data = e.data;
+  $("#events").html(data.call)
   if (data) {
     switch (data.type) {
       case 'rc-call-ring-notify':
@@ -44,7 +45,7 @@ window.addEventListener('message', (e) => {
         console.log(data.call);
         break;
       case 'rc-message-updated-notify':
-      console.log("VOICEMAIL?")
+        console.log("VOICEMAIL?")
         console.log(data.message.type)
         console.log(data.message.uri)
         break
