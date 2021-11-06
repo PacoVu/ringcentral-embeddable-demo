@@ -9,7 +9,9 @@ function init(){
 
 window.addEventListener('message', (e) => {
   const data = e.data;
-  $("#events").html(JSON.stringify(data.call))
+  if (data.call.direction == 'Inbound'){
+    $("#events").html(`Incoming call from: ${data.call.from.phoneNumber}. Call status: ${data.call.telephonyStatus}`)
+  }
   if (data) {
     switch (data.type) {
       case 'rc-call-ring-notify':
