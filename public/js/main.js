@@ -66,10 +66,10 @@ function getPhoneNumberInfo(phoneNumber){
   var getting = $.get( url );
   getting.done(function( res ) {
     if (res.status == "ok"){
-      $('#phone-number').html(res.callerInfo.number)
-      $('#location').html(res.callerInfo.location)
-      $('#carrier').html(res.callerInfo.carrier)
-      $('#risk-level').html(res.callerInfo.risk)
+      $('#phone-number').html(`Caller number: ${res.callerInfo.number}`)
+      $('#location').html(`Location: ${res.callerInfo.location}`)
+      $('#carrier').html(`Carrier: ${res.callerInfo.carrier}`)
+      $('#risk-level').html(`Risk level: ${res.callerInfo.risk}`)
     }else{
       console.log(res.callerInfo)
     }

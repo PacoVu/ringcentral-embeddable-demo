@@ -67,7 +67,7 @@ function spamNumberDetectionRemote(phoneNumber, callback){
             number: resp.numbering.original.complete_phone_number,
             location: `${resp.location.city}, ${resp.location.state} - ${resp.location.zip}. ${resp.location.country.name}`,
             carrier: resp.carrier.name,
-            risk: `Level: ${resp.risk.level}`
+            risk: resp.risk.level
           }
           callback(null, callerInfo)
         }
