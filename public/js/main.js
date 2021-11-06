@@ -11,6 +11,8 @@ window.addEventListener('message', (e) => {
   const data = e.data;
   if (data.call && data.call.direction == 'Inbound'){
     $("#events").html(`Incoming call from: ${data.call.from.phoneNumber}. Call status: ${data.call.telephonyStatus}`)
+    if (data.call.telephonyStatus == 'Ringing')
+      getPhoneNumberInfo(data.call.from.phoneNumber)
   }
   if (data) {
     switch (data.type) {
@@ -18,7 +20,6 @@ window.addEventListener('message', (e) => {
         // get call when user gets a ringing call
         console.log("RINGING...")
         console.log(data.call);
-        getPhoneNumberInfo(data.call.from.phoneNumber)
         break;
       case 'rc-call-init-notify':
         // get call when user creates a call from dial
