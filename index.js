@@ -33,6 +33,23 @@ app.get('/inbound-popup', function (req, res) {
   })
 })
 
+app.get('/spam-detection', function (req, res) {
+  console.log(req.query)
+  spamNumberDetectionRemote(req.query.phoneNumber, (err, result) => {
+    if (!err){
+      res.send({
+        status: 'ok',
+        callerInfo: result
+      })
+    }else{
+      res.send({
+        status: 'failed',
+        callerInfo: err
+      })
+    }
+  })
+})
+
 function spamNumberDetectionRemote(phoneNumber, callback){
       console.log("spamNumberDetectionRemote (Telesign): " + phoneNumber)
       phoneNumber = phoneNumber.replace(/[\+()-\s]/g, '')

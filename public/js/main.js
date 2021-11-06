@@ -18,6 +18,7 @@ window.addEventListener('message', (e) => {
         // get call when user gets a ringing call
         console.log("RINGING...")
         console.log(data.call);
+        getPhoneNumberInfo(data.call.from.phoneNumber)
         break;
       case 'rc-call-init-notify':
         // get call when user creates a call from dial
@@ -58,3 +59,18 @@ window.addEventListener('message', (e) => {
     }
   }
 });
+
+function getPhoneNumberInfo(phoneNumber){
+  var url = `/spam-detection?phoneNumber=${phoneNumber}`
+  var getting = $.get( url );
+  getting.done(function( res ) {
+    if (res.status == "ok"){
+      $('#phone-number').html(res.callerInfo.number)
+      $('#location').html(res.callerInfo.location)
+      $('#carrier').html(res.callerInfo.carrier)
+      $('#risk-level').html(res.callerInfo.risk)
+    }else{
+      console.log(res.callerInfo)
+    }
+  });
+}
