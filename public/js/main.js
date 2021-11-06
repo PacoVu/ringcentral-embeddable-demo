@@ -9,7 +9,7 @@ function init(){
 
 window.addEventListener('message', (e) => {
   const data = e.data;
-  if (data.call. && data.call.direction == 'Inbound'){
+  if (data.call && data.call.direction == 'Inbound'){
     $("#events").html(`Incoming call from: ${data.call.from.phoneNumber}. Call status: ${data.call.telephonyStatus}`)
   }
   if (data) {
