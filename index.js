@@ -26,15 +26,22 @@ app.get('/', function (req, res) {
 
 app.get('/inbound-popup', function (req, res) {
   console.log(req.query)
+  /*
   spamNumberDetectionRemote(req.query.phoneNumber, (err, result) => {
       res.render('inbound-popup', {
         callerInfo: result
       })
   })
+  */
 })
 
 app.get('/spam-detection', function (req, res) {
   console.log(req.query)
+  res.send({
+    status: 'ok',
+    callerInfo: {}
+  })
+  /*
   spamNumberDetectionRemote(req.query.phoneNumber, (err, result) => {
     if (!err){
       res.send({
@@ -48,6 +55,7 @@ app.get('/spam-detection', function (req, res) {
       })
     }
   })
+  */
 })
 
 function spamNumberDetectionRemote(phoneNumber, callback){
