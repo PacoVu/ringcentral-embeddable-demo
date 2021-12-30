@@ -11,8 +11,8 @@ window.addEventListener('message', (e) => {
   const data = e.data;
   if (data.call && data.call.direction == 'Inbound'){
     $("#events").html(`Incoming call from: ${data.call.from.phoneNumber}. Call status: ${data.call.telephonyStatus}`)
-    if (data.call.telephonyStatus == 'Ringing')
-      getPhoneNumberInfo(data.call.from.phoneNumber)
+    //if (data.call.telephonyStatus == 'Ringing')
+    //  getPhoneNumberInfo(data.call.from.phoneNumber)
   }
   if (data) {
     switch (data.type) {
