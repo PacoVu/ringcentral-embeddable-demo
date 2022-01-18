@@ -35,6 +35,17 @@ app.get('/inbound-popup', function (req, res) {
   */
 })
 
+app.get('/rc_hs-bot', function (req, res) {
+  console.log(req.query)
+  /*
+  spamNumberDetectionRemote(req.query.phoneNumber, (err, result) => {
+      res.render('inbound-popup', {
+        callerInfo: result
+      })
+  })
+  */
+})
+
 app.get('/spam-detection', function (req, res) {
   console.log(req.query)
   res.send({
