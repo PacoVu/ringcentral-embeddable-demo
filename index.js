@@ -24,18 +24,11 @@ app.get('/', function (req, res) {
   res.render('index')
 })
 
-app.get('/inbound-popup', function (req, res) {
-  console.log(req.query)
-  /*
-  spamNumberDetectionRemote(req.query.phoneNumber, (err, result) => {
-      res.render('inbound-popup', {
-        callerInfo: result
-      })
-  })
-  */
+app.get('/url-scheme', function (req, res) {
+  res.render('url-scheme')
 })
 
-app.get('/rc_hs-bot', function (req, res) {
+app.get('/inbound-popup', function (req, res) {
   console.log(req.query)
   /*
   spamNumberDetectionRemote(req.query.phoneNumber, (err, result) => {
