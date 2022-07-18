@@ -26,13 +26,15 @@
   <script>
     (function() {
       var rcs = document.createElement("script");
-      //rcs.src = "https://ringcentral.github.io/ringcentral-embeddable/adapter.js?appServer=https://platform.devtest.ringcentral.com";
-      //rcs.src = "https://ringcentral.github.io/ringcentral-embeddable/adapter.js?clientId=1E3rPbdVTf-9E20azmVwpg";
       rcs.src = "https://ringcentral.github.io/ringcentral-embeddable/adapter.js?defaultCallWith=browser";
       var rcs0 = document.getElementsByTagName("script")[0];
       rcs0.parentNode.insertBefore(rcs, rcs0);
     })();
   </script>
+  <!--
+  //rcs.src = "https://ringcentral.github.io/ringcentral-embeddable/adapter.js?appServer=https://platform.devtest.ringcentral.com";
+  //rcs.src = "https://ringcentral.github.io/ringcentral-embeddable/adapter.js?clientId=1E3rPbdVTf-9E20azmVwpg";
+  -->
   <!--iframe width="300" height="500" id="rc-widget" allow="microphone" src="https://ringcentral.github.io/ringcentral-embeddable/app.html"></iframe -->
   <!--iframe width="300" height="500" allow="microphone" src="https://apps.ringcentral.com/integration/ringcentral-embeddable/1.0.3/app.html"></iframe -->
   <nav class="navbar navbar-default">
@@ -55,7 +57,7 @@
       <div id='carrier'></div>
       <div id='risk-level'></div>
     </div>
-    
+
   </section>
 </body>
 </html>
