@@ -11,10 +11,14 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <script>
-      function makeCall(number) {
+      function makeCall(phoneNumber) {
         // click to dial from embeddable
-        alert("call")
-          document.querySelector("#rc-widget").contentWindow.postMessage({
+        if (phoneNumber)
+          var number = phoneNumber
+        else
+          var number = $('#phoneNumber').val()
+
+        document.querySelector("#rc-widget-adapter-frame").contentWindow.postMessage({
                   type: 'rc-adapter-new-call',
                   phoneNumber: number,
                   toCall: true,
@@ -26,7 +30,12 @@
   <script>
     (function() {
       var rcs = document.createElement("script");
-      rcs.src = "https://ringcentral.github.io/ringcentral-embeddable/adapter.js?defaultCallWith=browser";
+      var clientId = "1E3rPbdVTf-9E20azmVwpg";
+      var clientSecret = "_CyM2DneR26WfjJ0U2wjJQ0M5CHvu8QUyKd-2H_B4P7g";
+      var jwt = "eyJraWQiOiI4NzYyZjU5OGQwNTk0NGRiODZiZjVjYTk3ODA0NzYwOCIsInR5cCI6IkpXVCIsImFsZyI6IlJTMjU2In0.eyJhdWQiOiJodHRwczovL3BsYXRmb3JtLnJpbmdjZW50cmFsLmNvbS9yZXN0YXBpL29hdXRoL3Rva2VuIiwic3ViIjoiNjIyODgzMjkwMTYiLCJpc3MiOiJodHRwczovL3BsYXRmb3JtLnJpbmdjZW50cmFsLmNvbSIsImV4cCI6MTc3NTk1MTk5OSwiaWF0IjoxNjQ5NzIwMTEzLCJqdGkiOiJXUEpIbFZCaFNIQ1BzdFFVN1pNOTVRIn0.dq1381ABmlAMLuvqoAhwp4AzeVDvwCtvTiCY55iqeP08O7qmewSOLgsy6fuCLsnPv0g894oqzW_GlYhwRwUAx8cD7wHLQlbfwA6YIAWd1vl0SCb3dFDotX2FpSGW4irTvXWalLo63X1ZUzsmi9oT2YaDOahk5Xno0rD0OI_SRMUwH6Wyv3sGDkwwHeAdKArj-CfDRKr6S9OP4BjDZNkZn38LRUpJwt3Oyt1qDTnHmg6QKzzEX4VW1sMyCSoNYqExrYa0d1QUwcwFcj-ebXplasv8Q9D8gp--o5_5YfboGliTSXyqyAidmexhdZYLc1RwbiZoFKQ230acPumVUmfLEg";
+      rcs.src = "https://apps.ringcentral.com/integration/ringcentral-embeddable/2.0.0/adapter.js?clientId=1E3rPbdVTf-9E20azmVwpg";
+      //rcs.src = "https://apps.ringcentral.com/integration/ringcentral-embeddable/latest/adapter.js?"+"clientId="+clientId+"&clientSecret="+clientSecret+"&jwt="+jwt;
+      //rcs.src = "https://apps.ringcentral.com/integration/ringcentral-embeddable/latest/adapter.js";
       var rcs0 = document.getElementsByTagName("script")[0];
       rcs0.parentNode.insertBefore(rcs, rcs0);
     })();
@@ -57,7 +66,24 @@
       <div id='carrier'></div>
       <div id='risk-level'></div>
     </div>
-
+    <div class='col-sm-2'>
+      <div><b>Call from Embeddable</b></div>
+      <ul>
+        <li><div onclick="makeCall('+12092484775')">Alice 12092484775</div></li>
+        <li><div onclick="makeCall('+14081234567')">Anne 14081234567</div></li>
+        <li><div onclick="makeCall('*801')">Anne 14081234567</div></li>
+      </ul>
+      <input id="phoneNumber" type="phone" value="">Enter number</input>
+      <button onclick="javascript:makeCall('6505130930')">Dial</button>
+      <!--ul>
+        <li>
+          <div>Voice</div>
+          <a target="_blank" title="rcapp://r/dialer?number=+12092484775" href="rcapp://r/dialer?number=+12092484775">Dial this number</a></br>
+          <a target="_blank" title="rcapp://r/call?number=+14081234567" href="rcapp://r/call?number=+14081234567">Call this number</a></br>
+          <a target="_blank" title="rcapp://r/call?number=+14081234567" href="rcapp://r/call?number=*801">Pick parked call</a></br>
+        </li>
+      </ul-->
+    </div>
   </section>
 </body>
 </html>

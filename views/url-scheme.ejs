@@ -12,6 +12,19 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
+  <script>
+    (function() {
+      var rcs = document.createElement("script");
+      var clientId = "1E3rPbdVTf-9E20azmVwpg";
+      var clientSecret = "_CyM2DneR26WfjJ0U2wjJQ0M5CHvu8QUyKd-2H_B4P7g";
+      var jwt = "eyJraWQiOiI4NzYyZjU5OGQwNTk0NGRiODZiZjVjYTk3ODA0NzYwOCIsInR5cCI6IkpXVCIsImFsZyI6IlJTMjU2In0.eyJhdWQiOiJodHRwczovL3BsYXRmb3JtLnJpbmdjZW50cmFsLmNvbS9yZXN0YXBpL29hdXRoL3Rva2VuIiwic3ViIjoiNjIyODgzMjkwMTYiLCJpc3MiOiJodHRwczovL3BsYXRmb3JtLnJpbmdjZW50cmFsLmNvbSIsImV4cCI6MTc3NTk1MTk5OSwiaWF0IjoxNjQ5NzIwMTEzLCJqdGkiOiJXUEpIbFZCaFNIQ1BzdFFVN1pNOTVRIn0.dq1381ABmlAMLuvqoAhwp4AzeVDvwCtvTiCY55iqeP08O7qmewSOLgsy6fuCLsnPv0g894oqzW_GlYhwRwUAx8cD7wHLQlbfwA6YIAWd1vl0SCb3dFDotX2FpSGW4irTvXWalLo63X1ZUzsmi9oT2YaDOahk5Xno0rD0OI_SRMUwH6Wyv3sGDkwwHeAdKArj-CfDRKr6S9OP4BjDZNkZn38LRUpJwt3Oyt1qDTnHmg6QKzzEX4VW1sMyCSoNYqExrYa0d1QUwcwFcj-ebXplasv8Q9D8gp--o5_5YfboGliTSXyqyAidmexhdZYLc1RwbiZoFKQ230acPumVUmfLEg";
+      rcs.src = "https://apps.ringcentral.com/integration/ringcentral-embeddable/2.0.0/adapter.js?clientId=1E3rPbdVTf-9E20azmVwpg";
+      //rcs.src = "https://apps.ringcentral.com/integration/ringcentral-embeddable/latest/adapter.js?"+"clientId="+clientId+"&clientSecret="+clientSecret+"&jwt="+jwt;
+      //rcs.src = "https://apps.ringcentral.com/integration/ringcentral-embeddable/latest/adapter.js";
+      var rcs0 = document.getElementsByTagName("script")[0];
+      rcs0.parentNode.insertBefore(rcs, rcs0);
+    })();
+  </script>
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -113,7 +126,16 @@
           </li>
           <li>
             <div>Team Messaging: N/A</div>
+            <a target="_blank" title="rcapp://r/glip?type=all" href="rcapp://r/glip?type=all">All</a></br>
+            <a target="_blank" title="rcapp://r/glip?type=direct" href="rcapp://r/glip?type=direct">Direct</a></br>
+            <a target="_blank" title="rcapp://r/glip?type=teams" href="rcapp://r/glip?type=teams">Teams</a></br>
+            <a target="_blank" title="rcapp://chat/r?groupid=1179396104194" href="rcapp://chat/r?groupid=<chat id>">Chat group</a></br>
           </li>
+          <li>
+            <div>Fax</div>
+            <a target="_blank" title="rcapp://r/fax/16505130930" href="rcapp://r/fax/<recipient number>">Fax to a number</a></br>
+          </li>
+
           <li>
             <div>Meetings: N/A</div>
           </li>
@@ -163,12 +185,11 @@
           <li><a target="_blank" href="rcmobile://call?number=+12092484775">Call this number</a></li>
           <li><a target="_blank" href="rcmobile://sms?number=+12092484775">Text this number</a></li>
           <li><a target="_blank" href="rcmobile://sms?number=+12092484775&body=Hello world">Text this number</a></li>
-        </ul>
-      </div>
-      <div class='col-sm-2'>
-        <div><b>Call from Embeddable</b></div>
-        <ul>
-          <li><a target="_blank" href="javascript:makeCall('+12092484775')">Call this number</a></li>
+          <li><a target="_blank" href="rcmobile://sms?+12092484775">Open SMS</a></li>
+          <li><a target="_blank" href="rcmobile://fax?+12092484775">Open Fax</a></li>
+          <li><a target="_blank" href="rcmobile://contacts?Agent 122">Open Contacts</a></li>
+          <li><a target="_blank" href="rcmobile://calllog?">Open call log</a></li>
+          <li><a target="_blank" href="rcmobile://missedcalls?">Open missed calls</a></li>
         </ul>
       </div>
     </div>

@@ -53,13 +53,27 @@ window.addEventListener('message', (e) => {
         console.log(data.message.type)
         console.log(data.message.uri)
         break
+      case 'rc-webphone-connection-status-notify':
+        console.log("CONNECTION STATUS:", data.connectionStatus)
+        if (data.connectionStatus == 'connectionStatus-connected')
+          console.log("Device Id:", data.deviceId)
+        break;
+      case 'rc-telephony-session-notify':
+        console.log("TELEPHONY")
+        console.log(data);
+        break
+      case 'rc-call-end-notify':
+        console.log("TELEPHONY CALL END")
+        console.log(data);
+        break
       default:
         console.log("OTHERS...")
-        //console.log(data);
+        console.log(data);
         break;
     }
   }
 });
+
 
 function getPhoneNumberInfo(phoneNumber){
   var url = `/spam-detection?phoneNumber=${phoneNumber}`

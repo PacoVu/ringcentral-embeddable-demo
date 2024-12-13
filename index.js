@@ -28,6 +28,11 @@ app.get('/url-scheme', function (req, res) {
   res.render('url-scheme')
 })
 
+app.get('/oauth2callback', function (req, res){
+  //http://localhost:3002/oauth2callback
+  console.log(req.query)
+})
+
 app.get('/inbound-popup', function (req, res) {
   console.log(req.query)
   /*
@@ -45,7 +50,7 @@ app.get('/spam-detection', function (req, res) {
     status: 'ok',
     callerInfo: {}
   })
-  /*
+
   spamNumberDetectionRemote(req.query.phoneNumber, (err, result) => {
     if (!err){
       res.send({
@@ -59,7 +64,7 @@ app.get('/spam-detection', function (req, res) {
       })
     }
   })
-  */
+
 })
 
 function spamNumberDetectionRemote(phoneNumber, callback){
