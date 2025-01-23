@@ -30,11 +30,10 @@
   <script>
     (function() {
       var rcs = document.createElement("script");
-      var clientId = "1E3rPbdVTf-9E20azmVwpg";
-      var clientSecret = "_CyM2DneR26WfjJ0U2wjJQ0M5CHvu8QUyKd-2H_B4P7g";
-      var jwt = "eyJraWQiOiI4NzYyZjU5OGQwNTk0NGRiODZiZjVjYTk3ODA0NzYwOCIsInR5cCI6IkpXVCIsImFsZyI6IlJTMjU2In0.eyJhdWQiOiJodHRwczovL3BsYXRmb3JtLnJpbmdjZW50cmFsLmNvbS9yZXN0YXBpL29hdXRoL3Rva2VuIiwic3ViIjoiNjIyODgzMjkwMTYiLCJpc3MiOiJodHRwczovL3BsYXRmb3JtLnJpbmdjZW50cmFsLmNvbSIsImV4cCI6MTc3NTk1MTk5OSwiaWF0IjoxNjQ5NzIwMTEzLCJqdGkiOiJXUEpIbFZCaFNIQ1BzdFFVN1pNOTVRIn0.dq1381ABmlAMLuvqoAhwp4AzeVDvwCtvTiCY55iqeP08O7qmewSOLgsy6fuCLsnPv0g894oqzW_GlYhwRwUAx8cD7wHLQlbfwA6YIAWd1vl0SCb3dFDotX2FpSGW4irTvXWalLo63X1ZUzsmi9oT2YaDOahk5Xno0rD0OI_SRMUwH6Wyv3sGDkwwHeAdKArj-CfDRKr6S9OP4BjDZNkZn38LRUpJwt3Oyt1qDTnHmg6QKzzEX4VW1sMyCSoNYqExrYa0d1QUwcwFcj-ebXplasv8Q9D8gp--o5_5YfboGliTSXyqyAidmexhdZYLc1RwbiZoFKQ230acPumVUmfLEg";
-      rcs.src = "https://apps.ringcentral.com/integration/ringcentral-embeddable/2.0.0/adapter.js?clientId=1E3rPbdVTf-9E20azmVwpg";
-      //rcs.src = "https://apps.ringcentral.com/integration/ringcentral-embeddable/latest/adapter.js?"+"clientId="+clientId+"&clientSecret="+clientSecret+"&jwt="+jwt;
+      var clientId = "2VK6ONaaXQKbaSZPbEi2wh";
+      //rcs.src = "https://apps.ringcentral.com/integration/ringcentral-embeddable/2.0.0/adapter.js?clientId=1E3rPbdVTf-9E20azmVwpg";
+      rcs.src = "https://apps.ringcentral.com/integration/ringcentral-embeddable/latest/adapter.js?clientId=2VK6ONaaXQKbaSZPbEi2wh&defaultCallWith=browser&enablePopup=1&multipleTabsSupport=1"
+      //rcs.src = "https://apps.ringcentral.com/integration/ringcentral-embeddable/latest/adapter.js?clientId=2VK6ONaaXQKbaSZPbEi2wh&defaultCallWith=browser";
       //rcs.src = "https://apps.ringcentral.com/integration/ringcentral-embeddable/latest/adapter.js";
       var rcs0 = document.getElementsByTagName("script")[0];
       rcs0.parentNode.insertBefore(rcs, rcs0);
@@ -74,7 +73,7 @@
         <li><div onclick="makeCall('*801')">Anne 14081234567</div></li>
       </ul>
       <input id="phoneNumber" type="phone" value="">Enter number</input>
-      <button onclick="javascript:makeCall('6505130930')">Dial</button>
+      <button onclick="javascript:makeCall()">Dial</button>
       <!--ul>
         <li>
           <div>Voice</div>

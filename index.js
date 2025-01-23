@@ -20,7 +20,14 @@ var server = require('http').createServer(app);
 server.listen(port);
 console.log("listen to port " + port)
 //var rc_engine = require('./engine');
+console.log("Check")
 app.get('/', function (req, res) {
+  console.log("default page")
+  res.render('index')
+})
+
+app.get('/index', function (req, res) {
+  console.log("index page")
   res.render('index')
 })
 
