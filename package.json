@@ -18,7 +18,7 @@
     "dotenv": "^4.0.0",
     "ejs": "^2.5.6",
     "express": "^4.15.3",
-    "@ringcentral/sdk": ""
+    "@ringcentral/sdk": "^5.0.4"
   },
   "engines": {
     "node": "8.1.2"
