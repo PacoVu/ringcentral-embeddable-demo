@@ -1,8 +1,8 @@
 var path = require('path')
 var TeleSignSDK = require('telesignsdk');
+const RCPlatform = require('./platform.js')
 
-if('production' !== process.env.LOCAL_ENV )
-  require('dotenv').load();
+require('dotenv').load();
 
 var express = require('express');
 var app = express();
@@ -15,6 +15,8 @@ app.set('view engine', 'ejs')
 app.use(urlencoded);
 
 var port = process.env.PORT || 3002
+
+let rc_platform = new RCPlatform()
 
 var server = require('http').createServer(app);
 server.listen(port);
@@ -33,6 +35,38 @@ app.get('/index', function (req, res) {
 
 app.get('/url-scheme', function (req, res) {
   res.render('url-scheme')
+})
+
+app.get('/phone', function (req, res) {
+  // let sipInfo =  {
+  //   transport: "WSS",
+  //   username: "17203861294*11119",
+  //   password: "y5qZyPa1",
+  //   authorizationTypes: ["SipDigest"],
+  //   authorizationId: "802404906016",
+  //   domain: "sip.ringcentral.com",
+  //   outboundProxy: "sip112-1141.ringcentral.com:8083",
+  //   outboundProxyBackup: "sip121-1141.ringcentral.com:8083",
+  //   stunServers: ["stun1.ringcentral.com:19302", "stun2.ringcentral.com:19302"],
+  // }
+  // "sipInfo": [
+  //   {
+  //     "transport": "WSS",
+  //     "username": "17203861294*11119",
+  //     "password": "y5qZyPa1",
+  //     "authorizationTypes": [
+  //       "SipDigest"
+  //     ],
+  //     "authorizationId": "802404906016",
+  //     "domain": "sip.ringcentral.com",
+  //     "outboundProxy": "sip112-1141.ringcentral.com:8083",
+  //     "outboundProxyBackup": "sip121-1141.ringcentral.com:8083",
+  //     "stunServers": [
+  //       "stun1.ringcentral.com:19302",
+  //       "stun2.ringcentral.com:19302"
+  //     ]
+  //   }
+  res.render('clicktodial', { sipInfo: sipInfo })
 })
 
 app.get('/oauth2callback', function (req, res){
@@ -96,4 +130,32 @@ function spamNumberDetectionRemote(phoneNumber, callback){
           callback(null, callerInfo)
         }
       }, phoneNumber, "sign-in")
+}
+
+login()
+async function login(){
+  await rc_platform.login()
+  await registerWebPhone()
+}
+let sipInfo = null
+async function registerWebPhone(){
+  var p = await rc_platform.getPlatform()
+      if (p){
+        try{
+          let endpoint = "/restapi/v1.0/client-info/sip-provision"
+          let bodyParams = {
+            sipInfo: [{
+              transport: "WSS"
+            }]
+          }
+          var resp = await p.post(endpoint, bodyParams)
+          var jsonObj = await resp.json()
+          // console.log(JSON.stringify(jsonObj))
+          sipInfo = jsonObj.sipInfo[0]
+        }catch(e){
+          console.log(e.message)
+        }
+      }else{
+        console.log("Pls login")
+      }
 }

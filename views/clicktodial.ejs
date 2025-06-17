@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>RC Embeddable Demo</title>
+
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/ringcentral-web-phone@2.1.6/dist/esm/index.umd.js"></script>
+    <script type="text/javascript" src="js/c2d.js"></script>
+    <script>
+      window.sipInfo = '<%- JSON.stringify(sipInfo) %>'
+    </script>
+</head>
+<body onload="init()">
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="/" class="navbar-brand"><b>AIR Call</b> Demo</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <!--li><a href="/index">Embeddable</a></li-->
+      </ul>
+    </div>
+  </nav>
+
+  <section id='content'>
+    <div class='col-sm-2'>
+      <div><b>Call AIR from a Web phone</b></div>
+      <button class="btn-call" onclick="callAIR()">Call AIR</button>
+      <button id="hangupBtn" class="btn-call"  disabled onclick="hangup()">Hangup</button>
+    </div>
+  </section>
+</body>
+</html>
