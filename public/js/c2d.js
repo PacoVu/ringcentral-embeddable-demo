@@ -8,44 +8,53 @@ async function init(){
   webPhone.on("outboundCall", (callSession) => {
     callSession.once("failed", (message) => {
       console.log("Outbound call failed, message is", message);
+      $("#callBtn").attr("disabled", false)
     });
 
     callSession.once("answered", () => {
       console.log("Outbound call answered");
       $("#hangupBtn").attr("disabled", false)
+      $("#hangupBtn").css("background-color", "red");
+      // $("#callBtn").attr("disabled", true)
+      $("#callBtn").css("background-color", "gray");
     });
   });
-
+  pollFreeSlot()
 }
 
-async function callAIR(){
-  callSession = await webPhone.call("16282452413");
-}
-
-async function hangup(){
-  if (callSession){
-    await callSession.hangup();
-    $("#hangupBtn").attr("disabled", true)
-    callSession = null
+function pollFreeSlot(){
+  if (!callSession){
+    var url = `/poll-free-slot`
+    var getting = $.get( url )
+    getting.done( function( res ) {
+      if (res.status == "ok"){
+        console.log("can call")
+        $("#callBtn").attr("disabled", false)
+        $("#callBtn").css("background-color", "green");
+      }else{
+        console.log(res.callerNumbers)
+        $("#callBtn").attr("disabled", true)
+        $("#callBtn").css("background-color", "gray");
+        alert("There are too many callers. Please wait and retry again in a few minutes!")
+      }
+      setTimeout(function(){
+        pollFreeSlot()
+      }, 5000)
+    });
   }
 }
 
+async function callAIR(){
+  $("#callBtn").attr("disabled", true)
+  callSession = await webPhone.call("16282452413")
+}
 
-
-/*
-Local Format:	(820) 345-4400
-Fraud Score:	65
-Carrier:	FRACTEL, LLC
-Line Type:	VOIP
-
-Local Format:	(661) 473-4539
-Fraud Score:	0
-Carrier:	Verizon Wireless
-Line Type:	Wireless
-
-Local Format:	(760) 685-1064
-Fraud Score:	0
-Carrier:	Verizon Wireless
-Line Type:	Wireless
-SMS-CAR-432 => Message too long.
-*/
+function hangup(){
+  if (callSession){
+    callSession.hangup();
+    $("#hangupBtn").attr("disabled", true)
+    $("#hangupBtn").css("background-color", "gray");
+    callSession = null
+    pollFreeSlot()
+  }
+}
