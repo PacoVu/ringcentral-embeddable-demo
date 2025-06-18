@@ -39,6 +39,7 @@ app.get('/url-scheme', function (req, res) {
 })
 
 app.get('/phone', function (req, res) {
+  console.log(sipInfo)
   res.render('clicktodial', { sipInfo: sipInfo })
 })
 
