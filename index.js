@@ -1,6 +1,7 @@
 var path = require('path')
 // var TeleSignSDK = require('telesignsdk');
 const RCPlatform = require('./platform.js')
+const fs = require('fs')
 
 require('dotenv').load();
 
