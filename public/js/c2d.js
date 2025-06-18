@@ -1,5 +1,6 @@
 let webPhone = null
 let callSession = null
+let timer = null
 async function init(){
   let sipInfo = JSON.parse(window.sipInfo)
   webPhone = new WebPhone({ sipInfo });
@@ -9,6 +10,7 @@ async function init(){
     callSession.once("failed", (message) => {
       console.log("Outbound call failed, message is", message);
       $("#callBtn").attr("disabled", false)
+      readFreeSlot()
     });
 
     callSession.once("answered", () => {
@@ -17,6 +19,7 @@ async function init(){
       $("#hangupBtn").css("background-color", "red");
       // $("#callBtn").attr("disabled", true)
       $("#callBtn").css("background-color", "gray");
+      readFreeSlot()
     });
   });
   pollFreeSlot()
@@ -28,20 +31,27 @@ function pollFreeSlot(){
     var getting = $.get( url )
     getting.done( function( res ) {
       if (res.status == "ok"){
-        console.log("can call")
         $("#callBtn").attr("disabled", false)
         $("#callBtn").css("background-color", "green");
       }else{
-        console.log(res.callerNumbers)
         $("#callBtn").attr("disabled", true)
         $("#callBtn").css("background-color", "gray");
-        alert("There are too many callers. Please wait and retry again in a few minutes!")
       }
-      setTimeout(function(){
+      console.log(res.callerNumbers)
+      $("#callNumbers").html(`<b>Number of active calls:</b><span> ${res.callerNumbers}`)
+      timer = setTimeout(function(){
         pollFreeSlot()
       }, 5000)
     });
   }
+}
+
+function readFreeSlot(){
+    var url = `/poll-free-slot`
+    var getting = $.get( url )
+    getting.done( function( res ) {
+      $("#callNumbers").html(`<b>Number of active calls:</b><span> ${res.callerNumbers}`)
+    });
 }
 
 async function callAIR(){
