@@ -105,8 +105,6 @@ function spamNumberDetectionRemote(phoneNumber, callback){
       }, phoneNumber, "sign-in")
 }
 
-let callerNumbers = 0
-
 app.get('/poll-free-slot', function (req, res) {
   if (callerNumbers > 5)
     res.send({status: "full", callerNumbers: callerNumbers})
