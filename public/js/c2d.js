@@ -3,6 +3,7 @@ let callSession = null
 let timer = null
 async function init(){
   let sipInfo = JSON.parse(window.sipInfo)
+  console.log(sipInfo)
   webPhone = new WebPhone({ sipInfo });
   await webPhone.start();
 

@@ -15,7 +15,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.use(urlencoded);
 
-var port = process.env.PORT || 3002
+var port = process.env.PORT || 3000
 
 let rc_platform = new RCPlatform()
 let callerNumbers = 0
@@ -208,7 +208,7 @@ async function registerWebPhone(){
       }
 }
 
-DELIVERY_ADDRESS='https://rc-embeddable-demo.herokuapp.com//webhookcallback'
+// DELIVERY_ADDRESS='https://rc-embeddable-demo.herokuapp.com//webhookcallback'
 DELIVERY_MODE_TRANSPORT_TYPE='WebHook'
 
 async function subscribeForNotification(){
@@ -220,7 +220,7 @@ async function subscribeForNotification(){
           ],
           deliveryMode: {
               transportType: "WebHook",
-              address: DELIVERY_ADDRESS,
+              address: process.env.DELIVERY_ADDRESS,
               verificationToken: "a234-4df1-2006-da2a-3efc-d0d7",
             },
           expiresIn: 86400

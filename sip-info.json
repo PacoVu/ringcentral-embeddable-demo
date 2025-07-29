@@ -1,0 +1,1 @@
+{"transport":"WSS","username":"17203861294*11913","password":"LM31L","authorizationTypes":["SipDigest"],"authorizationId":"802996853017","domain":"sip.ringcentral.com","outboundProxy":"sip113-1211.ringcentral.com:8083","outboundProxyBackup":"sip123-1121.ringcentral.com:8083","stunServers":["stun1.ringcentral.com:19302","stun2.ringcentral.com:19302"]}

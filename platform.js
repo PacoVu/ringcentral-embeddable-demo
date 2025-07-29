@@ -1,12 +1,5 @@
 const RingCentral = require('@ringcentral/sdk').SDK
 
-// RINGCENTRAL_CLIENTID = "8iclkdgURmnfIH9Hlt6lV2"
-// RINGCENTRAL_CLIENTSECRET = "fV3F589AKl2b4xfmSTdv5I9zgwNnd4if0b5Ax9DedLrU"
-// RINGCENTRAL_SERVER = 'https://platform.ringcentral.com'
-//
-//
-// RC_JWT_119 ="eyJraWQiOiI4NzYyZjU5OGQwNTk0NGRiODZiZjVjYTk3ODA0NzYwOCIsInR5cCI6IkpXVCIsImFsZyI6IlJTMjU2In0.eyJhdWQiOiJodHRwczovL3BsYXRmb3JtLnJpbmdjZW50cmFsLmNvbS9yZXN0YXBpL29hdXRoL3Rva2VuIiwic3ViIjoiNjIyODgzMjkwMTYiLCJpc3MiOiJodHRwczovL3BsYXRmb3JtLnJpbmdjZW50cmFsLmNvbSIsImV4cCI6Mzg5NDgxNDc0NywiaWF0IjoxNzQ3MzMxMTAwLCJqdGkiOiJpTXFGU09BU1IwV1NoeG5mWDhxQVpBIn0.I9LpVSdQMcDeMxMLn9IQ3ILWsYtWexijXvedwQDCLJuGOcjfLGtdRS69r7bklMKx9XtKfCCD1fZmsf3memAvelEzqFxuqWDmYkU1m9lUGXeduILezH_FGmxz40TKKQoT-czYTUj9r2eYaahLrOhwvIOgUGACsFUBJLsm-nyP5m1XgWfclHwCRHQlqXmbYGNQQ3_lFPob6EUtuOMP1WHrW22EVRb36Eo4FKhgat__VX-bSGw6wiR26AzgrWzuSpZNqCrGTIYOXo9CSj3l3ZBmyU6u2RTm-mXkgZcClbuEgL0EenID1J36rYh8xg3blO7tXeMggueUQ34NDivVKHV92A"
-
 console.log("Start the platform")
 
 function RCPlatform() {
