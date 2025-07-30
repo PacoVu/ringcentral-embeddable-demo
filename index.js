@@ -117,6 +117,7 @@ app.get('/poll-free-slot', function (req, res) {
 })
 
 app.post('/webhookcallback', function(req, res) {
+  console.log("webhookcallback")
     if(req.headers.hasOwnProperty("validation-token")) {
         res.setHeader('Validation-Token', req.headers['validation-token']);
         res.statusCode = 200;
@@ -167,7 +168,7 @@ async function login(){
     await registerWebPhone()
   }else{
     sipInfo = JSON.parse(sipInfoStr)
-    console.log("saved sipInfo", sipInfo)
+    //console.log("saved sipInfo", sipInfo)
   }
 
   let subscriptionId = null
@@ -208,9 +209,6 @@ async function registerWebPhone(){
       }
 }
 
-// DELIVERY_ADDRESS='https://rc-embeddable-demo.herokuapp.com//webhookcallback'
-DELIVERY_MODE_TRANSPORT_TYPE='WebHook'
-
 async function subscribeForNotification(){
   var p = await rc_platform.getPlatform()
   if (p){
@@ -232,8 +230,8 @@ async function subscribeForNotification(){
         console.log(jsonObj.id)
         fs.writeFileSync('subscription.txt', jsonObj.id, 'utf8')
     }catch(e) {
-        console.error(e);
-        throw e;
+        console.error(e.message);
+        // throw e;
     }
   }else{
     console.log("Pls login")
