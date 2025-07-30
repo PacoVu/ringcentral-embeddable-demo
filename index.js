@@ -117,7 +117,6 @@ app.get('/poll-free-slot', function (req, res) {
 })
 
 app.post('/webhookcallback', function(req, res) {
-  console.log("webhookcallback")
     if(req.headers.hasOwnProperty("validation-token")) {
         res.setHeader('Validation-Token', req.headers['validation-token']);
         res.statusCode = 200;
@@ -168,7 +167,6 @@ async function login(){
     await registerWebPhone()
   }else{
     sipInfo = JSON.parse(sipInfoStr)
-    //console.log("saved sipInfo", sipInfo)
   }
 
   let subscriptionId = null
@@ -185,7 +183,6 @@ async function login(){
 }
 
 async function registerWebPhone(){
-  console.log("registerWebPhone")
   var p = await rc_platform.getPlatform()
       if (p){
         try{
@@ -197,7 +194,6 @@ async function registerWebPhone(){
           }
           var resp = await p.post(endpoint, bodyParams)
           var jsonObj = await resp.json()
-          // console.log(JSON.stringify(jsonObj))
 
           sipInfo = jsonObj.sipInfo[0]
           fs.writeFileSync('sip-info.json', JSON.stringify(sipInfo), 'utf8')
@@ -214,7 +210,7 @@ async function subscribeForNotification(){
   if (p){
     var params = {
           eventFilters: [
-            '/restapi/v1.0/account/~/extension/~/telephony/sessions?direction=Outbound&phoneNumber=+16282452413',
+            `/restapi/v1.0/account/~/extension/~/telephony/sessions?direction=Outbound&phoneNumber=+${process.env.PHONE_NUMBER}`
           ],
           deliveryMode: {
               transportType: "WebHook",
