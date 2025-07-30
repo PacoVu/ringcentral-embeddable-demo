@@ -136,7 +136,7 @@ app.post('/webhookcallback', function(req, res) {
             try {
               var jsonObj = JSON.parse(body)
               let party = jsonObj.body.parties[0]
-              if (party.extensionId && party.extensionId == "62288329016"){
+              if (party.extensionId && party.extensionId == process.env.EXTENSION_ID){
                 if (party.status.code == "Answered"){
                   callerNumbers++
                 }else if (party.status.code == "Disconnected"){
@@ -219,7 +219,7 @@ async function subscribeForNotification(){
           deliveryMode: {
               transportType: "WebHook",
               address: process.env.DELIVERY_ADDRESS,
-              verificationToken: "a234-4df1-2006-da2a-3efc-d0d7",
+              verificationToken: process.env.VERIFICATION_CODE,
             },
           expiresIn: 86400
           }
