@@ -15,7 +15,7 @@ window.addEventListener('message', (e) => {
     //  getPhoneNumberInfo(data.call.from.phoneNumber)
   }
   if (data) {
-    console.log("==>:" data.type);
+    console.log("==>:", data.type);
     return
     switch (data.type) {
       case 'rc-call-ring-notify':
