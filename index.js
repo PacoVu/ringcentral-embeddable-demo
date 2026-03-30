@@ -219,15 +219,13 @@ async function subscribeForNotification(){
             },
           expiresIn: 86400
           }
-          console.log(params)
     try {
         var resp = await p.post('/restapi/v1.0/subscription', params)
         var jsonObj = await resp.json()
-        console.log(jsonObj.id)
+        // console.log(jsonObj.id)
         fs.writeFileSync('subscription.txt', jsonObj.id, 'utf8')
     }catch(e) {
         console.error(e.message);
-        // throw e;
     }
   }else{
     console.log("Pls login")
